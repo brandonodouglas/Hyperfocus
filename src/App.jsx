@@ -5,6 +5,7 @@ import heroImg from './assets/hero.png'
 import './App.css'
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import Routine from './components/Routine';
 
 
 
@@ -73,13 +74,12 @@ function MyRoutines() {
       <br></br>
       <button onClick={() => {
         setRoutines([...routines, { id: nextId++, input: input }])
-        console.log(routines)
+        console.log(routines.length)
       }}>
-        Submit
+        Add Routine
       </button>
-    
         {routines.map(routine => (
-          <li>{routine.input}</li>
+          <Routine routineName={routine.input} />
         ))}
    
     </div>
