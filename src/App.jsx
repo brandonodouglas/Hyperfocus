@@ -56,12 +56,35 @@ function Contact() {
   return <h1>Contact Page</h1>
 }
 
+
+let nextId = 0;
+
 function MyRoutines() {
+  const [input, setInput] = useState('');
+  const [routines, setRoutines] = useState([]);
+    const listItems = routines.map(routine => <p>{routine}</p>)
+
+
   return (<>
-  <p>You currently have zero routines. Enter some tasks and subtasks below to get started.</p>
-  
-  </>  
-)
+    <p>You currently have zero routines.</p>
+    <p>Enter some tasks and subtasks below to get started. 💪</p>
+    <div className="center">
+      <input style={{ backgroundColor: 'white', color: 'black', width: '50%', fontSize: '20px' }} value={input} onChange={e => setInput(e.target.value)} />
+      <br></br>
+      <button onClick={() => {
+        setRoutines([...routines, { id: nextId++, input: input }])
+        console.log(routines)
+      }}>
+        Submit
+      </button>
+    
+        {routines.map(routine => (
+          <li>{routine.input}</li>
+        ))}
+   
+    </div>
+  </>
+  )
 }
 
 function App() {
@@ -73,7 +96,6 @@ function App() {
         <Link to="/about">About</Link> |{" "}
         <Link to="/contact">Contact</Link>
       </nav>
-
       {/* Routes */}
       <Routes>
         <Route path="/" element={<Home />} />
@@ -82,7 +104,6 @@ function App() {
         <Route path="/myroutines" element={<MyRoutines />} />
       </Routes>
     </BrowserRouter>
-
   );
 }
 
