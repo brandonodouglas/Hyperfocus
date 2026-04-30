@@ -5,7 +5,8 @@ import heroImg from './assets/hero.png'
 import './App.css'
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
-import Routine from './components/Routine';
+import Routine from './components/RoutineRelated/Routine';
+import RoutineForm from './components/RoutineRelated/RoutineForm'
 
 
 
@@ -58,31 +59,12 @@ function Contact() {
 }
 
 
-let nextId = 0;
 
 function MyRoutines() {
-  const [input, setInput] = useState('');
-  const [routines, setRoutines] = useState([]);
-    const listItems = routines.map(routine => <p>{routine}</p>)
-
 
   return (<>
-    <p>You currently have zero routines.</p>
-    <p>Enter some tasks and subtasks below to get started. 💪</p>
-    <div className="center">
-      <input style={{ backgroundColor: 'white', color: 'black', width: '50%', fontSize: '20px' }} value={input} onChange={e => setInput(e.target.value)} />
-      <br></br>
-      <button onClick={() => {
-        setRoutines([...routines, { id: nextId++, input: input }])
-        console.log(routines.length)
-      }}>
-        Add Routine
-      </button>
-        {routines.map(routine => (
-          <Routine routineName={routine.input} />
-        ))}
+    <RoutineForm />
    
-    </div>
   </>
   )
 }
