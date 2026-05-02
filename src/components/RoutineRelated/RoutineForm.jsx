@@ -13,7 +13,7 @@ function RoutineForm() {
     const [routines, setRoutines] = useState([]);
     const [descriptions, setDescriptions] = useState([]);
     if (!showForm) {
-        return (
+        return ( 
             <>
                 <p>You currently have zero routines.</p>
                 <p>Enter some tasks and subtasks below to get started! </p>
@@ -38,7 +38,6 @@ function RoutineForm() {
                     </button>
                     {routines.map(routine => (
                         <Routine key={routine.id} name={routine.routineName} description={routine.descriptionName}/>
-                        
                     ))}
                     
                 </div>
