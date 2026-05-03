@@ -1,6 +1,6 @@
 import { useState, button, input } from 'react'
 import Routine from '../RoutineRelated/Routine'
-
+import { FaTrash } from 'react-icons/fa';
 let nextId = 0;
 let nextId2 = 0;
 let counter = 0;
@@ -12,6 +12,7 @@ function RoutineForm() {
     const [showForm, setShowForm] = useState(false)
     const [routines, setRoutines] = useState([]);
     const [descriptions, setDescriptions] = useState([]);
+    const [deleteRoutine, setDeleteRoutine] = useState(false)
     if (!showForm) {
         return ( 
             <>
@@ -37,7 +38,8 @@ function RoutineForm() {
                         Add Routine
                     </button>
                     {routines.map(routine => (
-                        <Routine key={routine.id} name={routine.routineName} description={routine.descriptionName}/>
+                        <><Routine key={routine.id} name={routine.routineName} description={routine.descriptionName} /></>
+                        
                     ))}
                     
                 </div>
