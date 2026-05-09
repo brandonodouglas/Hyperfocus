@@ -2,6 +2,8 @@ import { useState, button, input } from 'react'
 import Routine from '../RoutineRelated/Routine'
 import { FaTrash } from 'react-icons/fa';
 import Stopwatch from '../TimerRelated/Stopwatch'
+import SubRoutineModal from "../Modals/SubRoutineModal"
+import SubRoutine from './SubRoutine';
 
 let nextId = 0;
 let nextId2 = 0;
@@ -15,6 +17,8 @@ function RoutineForm() {
     const [routines, setRoutines] = useState([]);
     const [descriptions, setDescriptions] = useState([]);
     const [deleteRoutine, setDeleteRoutine] = useState(false)
+    // For the subroutine stuff
+    const [modal, setModal] = useState(false);
     if (!showForm) {
         return (
             <>
@@ -40,13 +44,11 @@ function RoutineForm() {
                         Add Routine
                     </button>
                     {routines.map(routine => (
-                        <><Routine key={routine.id} name={routine.routineName} description={routine.descriptionName} /></>
+                        <Routine key={routine.id} name={routine.routineName} description={routine.descriptionName} />
+
 
                     ))}
-
-                    <Stopwatch />
-
-
+                    
                 </div>
             </>
         );

@@ -3,12 +3,11 @@ import { FaArrowCircleLeft, FaArrowCircleUp, FaPause, FaPlay, FaRegArrowAltCircl
 import { FaArrowRotateLeft } from 'react-icons/fa6';
 
 
-function Stopwatch(props) {
+function Stopwatch() {
     // Click counte for referencing timer states
     const [timerRunning, setTimerRunning] = useState(false)
     const [timerPaused, setTimerPaused] = useState(false)
     const [timerReset, setTimerReset] = useState(false)
-
     const [seconds, setSeconds] = useState(0)
     const [minutes, setMinutes] = useState(0)
     const [hours, setHours] = useState(0)
@@ -20,8 +19,6 @@ function Stopwatch(props) {
     const [paddingSeconds, setPaddingSeconds] = useState("0")
     const [paddingMinutes, setPaddingMinutes] = useState("0")
     const [paddingHours, setPaddingHours] = useState("0")
-    // For the useEffect stuff
-
     function startTimer() {
         setTimerRunning(true)
 
@@ -110,16 +107,16 @@ function Stopwatch(props) {
         }
     }, [timerRunning, timerPaused, timerReset]);
     if (!timerRunning && !timerPaused && !timerReset) {
-        return (<><p>Click the start button to begin the timer 💪</p><p style={{ color: 'white', fontSize: '40px', marginTop: '30px' }}>{paddingHours}{hours}:{paddingMinutes}{minutes}:{paddingSeconds}{seconds}</p><br></br><button onClick={startTimer} ><FaPlay color='black' /></button></>);
+        return (<><p style={{ color: 'white', fontSize: '20px', marginTop: '30px' }}>{paddingHours}{hours}:{paddingMinutes}{minutes}:{paddingSeconds}{seconds}</p><br></br><button onClick={startTimer} ><FaPlay color='black' /></button></>);
     }
     if (timerPaused && timerRunning == false) {
-        return (<><p>Timer paused.</p><p style={{ color: 'white', fontSize: '40px', marginTop: '30px' }}>{paddingHours}{hours}:{paddingMinutes}{minutes}:{paddingSeconds}{seconds}</p><br></br><button onClick={startTimer} ><FaPlay color='black' /></button><button onClick={resetTimer}><FaArrowRotateLeft color='black' /></button></>);
+        return (<><p style={{ color: 'white', fontSize: '20px', marginTop: '30px' }}>{paddingHours}{hours}:{paddingMinutes}{minutes}:{paddingSeconds}{seconds}</p><br></br><button onClick={startTimer} ><FaPlay color='black' /></button><button onClick={resetTimer}><FaArrowRotateLeft color='black' /></button></>);
     }
     if (timerRunning) {
-        return (<><p>Timer Running 🏃‍♂️</p><p style={{ color: 'white', fontSize: '40px', marginTop: '30px' }}>{paddingHours}{hours}:{paddingMinutes}{minutes}:{paddingSeconds}{seconds}</p><br></br><button onClick={pauseTimer}><FaPause color='black' /></button><button onClick={resetTimer} ><FaArrowRotateLeft color='black' /></button></>);
+        return (<><p style={{ color: 'white', fontSize: '20px', marginTop: '30px' }}>{paddingHours}{hours}:{paddingMinutes}{minutes}:{paddingSeconds}{seconds}</p><br></br><button onClick={pauseTimer}><FaPause color='black' /></button><button onClick={resetTimer} ><FaArrowRotateLeft color='black' /></button></>);
     }
     if (timerReset && !timerPaused && !timerRunning) {
-        return (<><p>Timer has been reset.</p><p style={{ color: 'white', fontSize: '40px', marginTop: '30px' }}>{paddingHours}{hours}:{paddingMinutes}{minutes}:{paddingSeconds}{seconds}</p><br></br><button onClick={startTimer} ><FaPlay color='black' /></button></>);
+        return (<><p style={{ color: 'white', fontSize: '20px', marginTop: '30px' }}>{paddingHours}{hours}:{paddingMinutes}{minutes}:{paddingSeconds}{seconds}</p><br></br><button onClick={startTimer} ><FaPlay color='black' /></button></>);
     }
 }
 export default Stopwatch;
