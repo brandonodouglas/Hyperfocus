@@ -92,7 +92,8 @@ function Routine(props) {
               <hr></hr>
  <ul>
                 {subTaskArray.map(thesubtask => (
-                  <li key={thesubtask.id}>{thesubtask.mysubtask}</li>
+
+                <Routine key={thesubtask.id} name={thesubtask.mysubtask} description={thesubtask.mydesc} />
                 ))}
               </ul>
               <p>Adding subtask to: {props.name}</p>
