@@ -4,7 +4,7 @@ import { FaTrash } from 'react-icons/fa';
 import Stopwatch from '../TimerRelated/Stopwatch'
 import SubRoutineModal from "../Modals/SubRoutineModal"
 import SubRoutine from './SubRoutine';
-import MonthlyCalendar from '../FullCalendar/MonthlyCalendar'
+import MonthlyCalendar from '../FullCalendar2/MonthlyCalendar'
 
 let nextId = 0;
 let nextId2 = 0;
