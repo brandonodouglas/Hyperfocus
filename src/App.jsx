@@ -7,7 +7,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import Routine from './components/RoutineRelated/Routine';
 import RoutineForm from './components/RoutineRelated/RoutineForm'
-
+import TaskTree from './components/TaskTreeRelated/TaskTree'
 
 
 
@@ -17,8 +17,10 @@ function Home() {
 
   return (<>
     <section id="center">
+      
 
       <div>
+        <TaskTree />
         <h1>⚡ Hyper-focus</h1>
         <h2> Welcome to Brandon's productivity time saving tool. ✨</h2>
         <h3>At Hyperfocus, we understand that money and time are both important.</h3>

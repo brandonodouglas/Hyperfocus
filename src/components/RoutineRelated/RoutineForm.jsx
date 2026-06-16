@@ -4,6 +4,7 @@ import { FaTrash } from 'react-icons/fa';
 import Stopwatch from '../TimerRelated/Stopwatch'
 import SubRoutineModal from "../Modals/SubRoutineModal"
 import SubRoutine from './SubRoutine';
+import MonthlyCalendar from '../FullCalendar/MonthlyCalendar'
 
 let nextId = 0;
 let nextId2 = 0;
@@ -19,6 +20,14 @@ function RoutineForm() {
     const [deleteRoutine, setDeleteRoutine] = useState(false)
     // For the subroutine stuff
     const [modal, setModal] = useState(false);
+
+    return (<>
+    
+        <MonthlyCalendar />
+    </>)
+
+
+    /*
     if (!showForm) {
         return (
             <>
@@ -50,9 +59,11 @@ function RoutineForm() {
                     ))}
                     
                 </div>
-            </>
+            </> 
         );
+        
     }
+        */
 }
 
 export default RoutineForm;
