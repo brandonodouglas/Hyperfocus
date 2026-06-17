@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-do
 import Routine from './components/RoutineRelated/Routine';
 import RoutineForm from './components/RoutineRelated/RoutineForm'
 import TaskTree from './components/TaskTreeRelated/TaskTree'
+import { Accordion, AccordionItem } from '@szhsin/react-accordion';
 
 
 
@@ -60,6 +61,28 @@ function Contact() {
   return <h1>Contact Page</h1>
 }
 
+function Todos() {
+  return (<><h1>Todos Page</h1>
+  <h2>Enter your todos here.</h2>
+  <Accordion>
+    <AccordionItem header="Test 1">
+      <p>hello</p>
+      <p>hello</p>
+    </AccordionItem>
+     <AccordionItem header="Test 2">
+      <p>hello 2</p>
+    </AccordionItem>
+  </Accordion>
+  
+  </>
+
+
+
+  )
+}
+
+
+
 
 
 function MyRoutines() {
@@ -79,6 +102,7 @@ function App() {
         <Link to="/">Home</Link> |{" "}
         <Link to="/about">About</Link> |{" "}
         <Link to="/contact">Contact</Link>
+        <Link to="/todos">Todos</Link>
       </nav>
       {/* Routes */}
       <Routes>
@@ -86,6 +110,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/myroutines" element={<MyRoutines />} />
+        <Route path="/todos" element={<Todos /> } />
       </Routes>
     </BrowserRouter>
   );
