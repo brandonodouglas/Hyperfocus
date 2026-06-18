@@ -21,13 +21,9 @@ function RoutineForm() {
     // For the subroutine stuff
     const [modal, setModal] = useState(false);
 
-    return (<>
     
-        <MonthlyCalendar />
-    </>)
 
-
-    /*
+    
     if (!showForm) {
         return (
             <>
@@ -63,7 +59,7 @@ function RoutineForm() {
         );
         
     }
-        */
+        
 }
 
 export default RoutineForm;

@@ -9,6 +9,7 @@ import Routine from './components/RoutineRelated/Routine';
 import RoutineForm from './components/RoutineRelated/RoutineForm'
 import TaskTree from './components/TaskTreeRelated/TaskTree'
 import { Accordion, AccordionItem } from '@szhsin/react-accordion';
+import Draggable from './components/MyDraggableComponents/Draggable'
 
 
 
@@ -64,6 +65,9 @@ function Contact() {
 function Todos() {
   return (<><h1>Todos Page</h1>
   <h2>Enter your todos here.</h2>
+  <Draggable />
+
+
   <Accordion>
     <AccordionItem header="Test 1">
       <p>hello</p>
