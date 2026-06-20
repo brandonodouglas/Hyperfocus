@@ -1,6 +1,7 @@
 import {useDraggable} from '@dnd-kit/react';
+import {useDraggable} from '@dnd-kit/react';
 
-export default function Draggable() {
+function Draggable() {
   const {ref} = useDraggable({
     id: 'draggable',
   });

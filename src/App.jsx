@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
@@ -9,8 +9,18 @@ import Routine from './components/RoutineRelated/Routine';
 import RoutineForm from './components/RoutineRelated/RoutineForm'
 import TaskTree from './components/TaskTreeRelated/TaskTree'
 import { Accordion, AccordionItem } from '@szhsin/react-accordion';
-import Draggable from './components/MyDraggableComponents/Draggable'
+import { PrimeReactProvider } from 'primereact/api'
+import { Tree } from 'primereact/tree';
+import { NodeService } from './service/NodeService';
 
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import 'primeicons/primeicons.css';
+import 'primeflex/primeflex.css';
+import 'primereact/resources/primereact.css';
+import 'primereact/resources/themes/lara-light-indigo/theme.css';
+import './index.css';
+import './flags.css';
 
 
 // My views
@@ -19,7 +29,7 @@ function Home() {
 
   return (<>
     <section id="center">
-      
+
 
       <div>
         <TaskTree />
@@ -63,26 +73,20 @@ function Contact() {
 }
 
 function Todos() {
-  return (<><h1>Todos Page</h1>
-  <h2>Enter your todos here.</h2>
-  <Draggable />
+  const [nodes, setNodes] = useState([]);
+  const [selectedKeys, setSelectedKeys] = useState(null);
 
 
-  <Accordion>
-    <AccordionItem header="Test 1">
-      <p>hello</p>
-      <p>hello</p>
-    </AccordionItem>
-     <AccordionItem header="Test 2">
-      <p>hello 2</p>
-    </AccordionItem>
-  </Accordion>
-  
-  </>
+  useEffect(() => {
+    NodeService.getTreeNodes().then((data) => setNodes(data));
+  }, []);
 
 
-
-  )
+  return (
+    <div className="card flex justify-content-center">
+            <Tree value={nodes} dragdropScope="demo" onDragDrop={(e) => setNodes(e.value)} className="w-full md:w-30rem" />
+        </div>
+  );
 }
 
 
@@ -93,30 +97,34 @@ function MyRoutines() {
 
   return (<>
     <RoutineForm />
-   
+
   </>
   )
 }
 
 function App() {
   return (
-    <BrowserRouter>
-      {/* Navigation */}
-      <nav>
-        <Link to="/">Home</Link> |{" "}
-        <Link to="/about">About</Link> |{" "}
-        <Link to="/contact">Contact</Link>
-        <Link to="/todos">Todos</Link>
-      </nav>
-      {/* Routes */}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/myroutines" element={<MyRoutines />} />
-        <Route path="/todos" element={<Todos /> } />
-      </Routes>
-    </BrowserRouter>
+    <PrimeReactProvider>
+
+
+      <BrowserRouter>
+        {/* Navigation */}
+        <nav>
+          <Link to="/">Home</Link> |{" "}
+          <Link to="/about">About</Link> |{" "}
+          <Link to="/contact">Contact</Link>
+          <Link to="/todos">Todos</Link>
+        </nav>
+        {/* Routes */}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/myroutines" element={<MyRoutines />} />
+          <Route path="/todos" element={<Todos />} />
+        </Routes>
+      </BrowserRouter>
+    </PrimeReactProvider>
   );
 }
 
