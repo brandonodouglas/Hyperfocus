@@ -84,7 +84,7 @@ function Todos() {
 
   return (
     <div className="card flex justify-content-center">
-            <Tree value={nodes} dragdropScope="demo" onDragDrop={(e) => setNodes(e.value)} className="w-full md:w-30rem" />
+            <Tree value={nodes} selectionMode="checkbox" selectionKeys={selectedKeys} onSelectionChange={(e) => setSelectedKeys(e.value)} dragdropScope="demo" onDragDrop={(e) => setNodes(e.value)} className="w-full md:w-30rem" />
         </div>
   );
 }
