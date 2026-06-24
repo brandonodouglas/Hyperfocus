@@ -7,6 +7,8 @@ import SubRoutine from './SubRoutine';
 import MonthlyCalendar from '../FullCalendar2/MonthlyCalendar'
 import Category from '../RoutineRelated/Category'
 import { ListBox } from 'primereact/listbox';
+import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
+
 
 
 
@@ -31,6 +33,7 @@ function RoutineForm(itmes) {
     const [modal, setModal] = useState(false);
 
     const [selectedRoutine, setSelectedRoutine] = useState(null);
+    const navigate = useNavigate();
     const presetRoutines = [
         { name: 'Cooking', code: 'NY' },
         { name: 'Coding', code: 'RM' },
@@ -47,11 +50,15 @@ function RoutineForm(itmes) {
 
     return (
         <>
+            
+                <h1>My Routines</h1>
             <p>Welcome to the categories or routines page</p>
             <p>👉 Use the text input to add new routines OR click on a routine to get started adding tasks to it. </p>
             <div className="card flex justify-content-center">  
-            <ListBox value={selectedRoutine}  onChange={(e) => console.log(e.value.name)} options={presetRoutines} optionLabel="name" className="w-full md:w-14rem" />
+            <ListBox value={selectedRoutine}  onChange={(e) => {navigate("/categories/" + e.value.name)}} options={presetRoutines} optionLabel="name" className="w-full md:w-14rem" />
         </div>
+
+        
           
 
             

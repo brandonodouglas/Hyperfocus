@@ -4,7 +4,7 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, useNavigate, useParams } from 'react-router-dom';
 import Routine from './components/RoutineRelated/Routine';
 import RoutineForm from './components/RoutineRelated/RoutineForm'
 import TaskTree from './components/TaskTreeRelated/TaskTree'
@@ -68,6 +68,12 @@ function About() {
   return <h1>About Page</h1>;
 }
 
+// For when a routine or category is clicked on
+function CategoryPage() {
+  let { routine } = useParams();
+  return <h1>{routine}</h1>
+}
+
 function Contact() {
   return <h1>Contact Page</h1>
 }
@@ -122,6 +128,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/myroutines" element={<MyRoutines />} />
           <Route path="/todos" element={<Todos />} />
+          <Route path="/categories/:routine" element={<CategoryPage />} />
         </Routes>
       </BrowserRouter>
     </PrimeReactProvider>
