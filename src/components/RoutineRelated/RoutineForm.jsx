@@ -53,14 +53,14 @@ function RoutineForm(itmes) {
     }
 
     function handleSubmit(e) {
-    e.preventDefault();
-    setPresetRoutines( // Replace the state
-  [ // with a new array
-    ...presetRoutines, // that contains all the old items
-    { name: value } // and one new item at the end
-  ]
-);
-  }
+        e.preventDefault();
+        setPresetRoutines( // Replace the state
+            [ // with a new array
+                ...presetRoutines, // that contains all the old items
+                { name: value } // and one new item at the end
+            ]
+        );
+    }
 
 
 
@@ -73,14 +73,14 @@ function RoutineForm(itmes) {
             <h3>👉 Use the text input to add new routines OR click on a routine to get started adding tasks to it. </h3>
             <div className="card flex justify-content-center">
                 <form onSubmit={handleSubmit}>
-                    
-                
-                <InputText value={value} placeholder="Enter Your Categories" onChange={handleChange} />
-                           <Button label="Submit" type='submit' onClick={handleSubmit} />
+
+
+                    <InputText value={value} placeholder="Enter Your Categories" onChange={handleChange} />
+                    <Button label="Submit" type='submit' onClick={handleSubmit} />
 
                 </form>
                 <div className="card flex justify-content-center">
-        </div>
+                </div>
             </div>
             <h1>Current Categories</h1>
 
