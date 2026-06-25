@@ -8,6 +8,10 @@ import MonthlyCalendar from '../FullCalendar2/MonthlyCalendar'
 import Category from '../RoutineRelated/Category'
 import { ListBox } from 'primereact/listbox';
 import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { InputText } from 'primereact/inputtext';
+import { Button } from 'primereact/button';
+
+
 
 
 
@@ -31,37 +35,65 @@ function RoutineForm(itmes) {
     const [deleteRoutine, setDeleteRoutine] = useState(false)
     // For the subroutine stuff
     const [modal, setModal] = useState(false);
+    const [value, setValue] = useState('');
+
 
     const [selectedRoutine, setSelectedRoutine] = useState(null);
     const navigate = useNavigate();
-    const presetRoutines = [
-        { name: 'Cooking', code: 'NY' },
-        { name: 'Coding', code: 'RM' },
-        { name: 'Gym Workout', code: 'LDN' },
-        { name: 'Theology Studies', code: 'IST' },
-        { name: 'Tidy Room', code: 'PRS' }
-    ];
+    const [presetRoutines, setPresetRoutines] = useState([
+        { name: 'Cooking' },
+        { name: 'Coding' },
+        { name: 'Gym Workout' },
+        { name: 'Theology Studies' },
+        { name: 'Tidy Room' }
+    ])
+
+    function handleChange(e) {
+        setValue(e.target.value)
+    }
+
+    function handleSubmit(e) {
+    e.preventDefault();
+    setPresetRoutines( // Replace the state
+  [ // with a new array
+    ...presetRoutines, // that contains all the old items
+    { name: value } // and one new item at the end
+  ]
+);
+  }
 
 
-    // Primereac list stufff
-
-    // Process preset routines and catgeories
 
 
     return (
         <>
-            
-                <h1>My Routines</h1>
+
+            <h1>My Routines</h1>
             <p>Welcome to the categories or routines page</p>
-            <p>👉 Use the text input to add new routines OR click on a routine to get started adding tasks to it. </p>
-            <div className="card flex justify-content-center">  
-            <ListBox value={selectedRoutine}  onChange={(e) => {navigate("/categories/" + e.value.name)}} options={presetRoutines} optionLabel="name" className="w-full md:w-14rem" />
+            <h3>👉 Use the text input to add new routines OR click on a routine to get started adding tasks to it. </h3>
+            <div className="card flex justify-content-center">
+                <form onSubmit={handleSubmit}>
+                    
+                
+                <InputText value={value} placeholder="Enter Your Categories" onChange={handleChange} />
+                           <Button label="Submit" type='submit' onClick={handleSubmit} />
+
+                </form>
+                <div className="card flex justify-content-center">
         </div>
+            </div>
+            <h1>Current Categories</h1>
 
-        
-          
+            <div className="card flex justify-content-center">
 
-            
+
+                <ListBox value={selectedRoutine} onChange={(e) => { navigate("/categories/" + e.value.name) }} options={presetRoutines} optionLabel="name" className="w-full md:w-14rem" />
+            </div>
+
+
+
+
+
         </>
     )
 

@@ -21,6 +21,8 @@ import 'primereact/resources/primereact.css';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import './index.css';
 import './flags.css';
+import { InputText } from 'primereact/inputtext';
+
 
 
 // My views
@@ -71,11 +73,20 @@ function About() {
 // For when a routine or category is clicked on
 function CategoryPage() {
   let { routine } = useParams();
-  return <h1>{routine}</h1>
+      const [value, setValue] = useState('');
+
+  return (
+  <>
+  <h1>{routine}</h1>
+  <div className="card flex justify-content-center">
+            <InputText value={value} placeholder="Enter Your Tasks Here" onChange={(e) => setValue(e.target.value)} />
+        </div>
+        </>
+  )
 }
 
 function Contact() {
-  return <h1>Contact Page</h1>
+  return (<h1>Contact Page</h1>)
 }
 
 function Todos() {
