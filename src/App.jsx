@@ -12,7 +12,6 @@ import { Accordion, AccordionItem } from '@szhsin/react-accordion';
 import { PrimeReactProvider } from 'primereact/api'
 import { Tree } from 'primereact/tree';
 import { NodeService } from './wrappers/services/NodeService';
-
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import 'primeicons/primeicons.css';
@@ -67,7 +66,11 @@ function Home() {
 }
 
 function About() {
-  return <h1>About Page</h1>;
+  return (
+    <h1 className="text-3xl font-bold underline">
+      Hello world! Welcome to the about page, now with tailwind css!
+    </h1>
+  )
 }
 
 // For when a routine or category is clicked on

@@ -11,6 +11,8 @@ export default function TaskTreeWrapper() {
 
     useEffect(() => {
         NodeService.getTreeNodes().then((data) => setNodes(data));
+        
+        NodeService.traverseTreeData(NodeService.getTreeNodes());
     }, []);
 
     return (
